@@ -1,0 +1,22 @@
+@startuml
+start
+
+:用户在客户端访问资源;
+:客户端通知用户资源需要授权;
+:用户启动授权流程;
+:客户端将用户重定向到授权服务器，附带client_id, redirect_uri, response_type, scope, state等参数;
+:用户在授权服务器上对应用进行授权;
+
+if (用户授权了应用) then (是)
+  :授权服务器将用户连同code和state参数重定向回客户端;
+  :用户提供code和state给客户端;
+  :客户端使用client_id, client_secret, code, redirect_uri, grant_type等参数向授权服务器请求访问令牌;
+  :授权服务器向客户端发出访问令牌和刷新令牌;
+  :客户端使用访问令牌向资源服务器请求资源;
+  :资源服务器向客户端提供请求的资源;
+else (否)
+  :授权流程结束;
+endif
+
+stop
+@enduml

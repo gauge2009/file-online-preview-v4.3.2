@@ -1,0 +1,11 @@
+@startuml
+class cn.keking.web.controller.OnlinePreviewController {
++ {static} String BASE64_DECODE_ERROR_MSG
+- FilePreviewFactory previewFactory
+- OtherFilePreviewImpl otherFilePreview
++ String onlinePreview(String,Model,HttpServletRequest)
++ String picturesPreview(String,Model,HttpServletRequest)
++ void getCorsFile(String,HttpServletResponse)
++ String addQueueTask(String)
+}
+@enduml

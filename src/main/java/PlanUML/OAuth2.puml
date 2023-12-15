@@ -1,0 +1,21 @@
+@startuml
+title OAuth 2.0 Authorization Code Flow
+
+actor User
+participant "Client\nApplication" as Client
+participant "Authorization\nServer" as AuthServer
+participant "Resource\nServer" as ResourceServer
+
+User -> Client: Access Resource
+Client -> User: Resource requires\nauthorization
+User -> Client: Initiates authorization
+Client -> AuthServer: Redirect user with\nclient_id, redirect_uri, response_type,\nscope, state
+User -> AuthServer: Authorize application
+AuthServer -> User: Redirect with code, state
+User -> Client: Provide code, state
+Client -> AuthServer: Request access token with\nclient_id, client_secret,\ncode, redirect_uri, grant_type
+AuthServer -> Client: Issue access token and refresh token
+Client -> ResourceServer: Request resource with access token
+ResourceServer -> Client: Provide requested resource
+
+@enduml
