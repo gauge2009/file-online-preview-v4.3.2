@@ -6,6 +6,7 @@ activityDiagram {
   FontColor #00FF00
   FontName arial
 
+
   diamond {
     BackgroundColor #ccf
     LineColor #00FF00
